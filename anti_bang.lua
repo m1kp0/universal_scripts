@@ -1,7 +1,7 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/m1kp0/libraries/refs/heads/main/m1kpe0_lime"))()
 local wind = lib:Window("anti bang")
 
-wind:Button("teleport", function()
+wind:Button("press", function()
   oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
   game.Workspace.FallenPartsDestroyHeight = -10000
   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, -1000, 0)
