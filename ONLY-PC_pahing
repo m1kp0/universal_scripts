@@ -30,7 +30,7 @@ main:CreateToggle('path', function(value)
                 path.CFrame = CFrame.new(plr.Character.HumanoidRootPart.Position + Vector3.new(0, -3, 0))
                 path.Rotation = Vector3.new(workspace.Camera.CFrame.LookVector)
                 path.Material = Enum.Material.SmoothPlastic
-                path.Transparency = 0.2
+                path.Transparency = 0.7
                 path.Anchored = true
                 path.Color = Color3.fromRGB(255, 255, 255)
             end
