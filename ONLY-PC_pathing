@@ -2,6 +2,7 @@
 local plr = game.Players.LocalPlayer
 local uis = game:GetService'UserInputService'
 local disabled = false
+local floating = false
 
 --lib
 local Library = loadstring(Game:HttpGet'https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard')()
@@ -14,10 +15,11 @@ local size3 = 5
 --tabs
 local pathing = Library:NewWindow'path'
 local main = pathing:NewSection'main'
-local set = pathing:NewSection'settings'
+local set = pathing:NewSection'path settings'
+local float = pathing:NewSection'float'
 
 --path toggle
-main:CreateToggle('path', function(value)
+main:CreateToggle('pathing (only pc)', function(value)
     if value then
         disabled = false
         local pathTool = Instance.new('Tool', plr.Backpack)
@@ -57,16 +59,45 @@ main:CreateToggle('path', function(value)
             end
         end
         for i, v in pairs(plr.Character:GetDescendants()) do
-            v.Name == 'path' then
+            if v.Name == 'path' then
                 v:Destroy()
             end
         end
     end
 end)
+
 set:CreateSlider('size X', 0, 100, 10, false, function(value)
     size1 = value
 end)
 
 set:CreateSlider('size Z', 0, 100, 5, false, function(value)
     size3 = value
+end)
+
+float:CreateToggle('floating (universal)', function(value)
+    if value then
+        floating = true
+        if floating then
+            local floatPart = Instance.new'Part'
+            floatPart.Parent = workspace
+            floatPart.Size = Vector3.new(99999, 1, 99999)
+            floatPart.Name = 'floatPart'
+            floatPart.Material = Enum.Material.SmoothPlastic
+            floatPart.Transparency = 1
+            floatPart.Anchored = true
+            floatPart.Color = Color3.fromRGB(255, 255, 255)
+            floatPart.Position = Vector3.new(plr.Character.HumanoidRootPart.Position.X, plr.Character.HumanoidRootPart.Position.Y - 3.5, plr.Character.HumanoidRootPart.Position.Z)
+            plr.Character.Humanoid.Jumping:Connect(function()
+                wait()
+                floatPart.Position = Vector3.new(plr.Character.HumanoidRootPart.Position.X, plr.Character.HumanoidRootPart.Position.Y - 3.5, plr.Character.HumanoidRootPart.Position.Z)
+            end)
+        end
+    else
+        floating = false
+        for i, v in pairs(workspace:GetDescendants()) do
+            if v.Name == 'floatPart' then
+                v:Destroy()
+            end
+        end
+    end
 end)
