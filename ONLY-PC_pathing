@@ -1,6 +1,7 @@
 --to script
 local plr = game.Players.LocalPlayer
 local uis = game:GetService'UserInputService'
+local disabled = false
 
 --lib
 local Library = loadstring(Game:HttpGet'https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard')()
@@ -18,11 +19,12 @@ local set = pathing:NewSection'settings'
 --path toggle
 main:CreateToggle('path', function(value)
     if value then
+        disabled = false
         local pathTool = Instance.new('Tool', plr.Backpack)
         pathTool.Name = 'path'
 
         uis.InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 and pathTool.Parent == plr.Character then
+            if input.UserInputType == Enum.UserInputType.MouseButton1 and pathTool.Parent == plr.Character and not disabled then
                 local path = Instance.new'Part'
                 path.Parent = workspace
                 path.Size = Vector3.new(size1, size2, size3)
@@ -30,12 +32,13 @@ main:CreateToggle('path', function(value)
                 path.CFrame = CFrame.new(plr.Character.HumanoidRootPart.Position + Vector3.new(0, -3, 0))
                 path.Rotation = Vector3.new(workspace.Camera.CFrame.LookVector)
                 path.Material = Enum.Material.SmoothPlastic
-                path.Transparency = 0.7
+                path.Transparency = 0.8
                 path.Anchored = true
                 path.Color = Color3.fromRGB(255, 255, 255)
             end
-        end)  
+        end)	
     else
+        disabled = true
         for i, v in pairs(workspace:GetDescendants()) do
             if v.Name == 'pathPart' then
                 v:Destroy()
@@ -47,22 +50,19 @@ main:CreateToggle('path', function(value)
         for i, v in pairs(plr:GetDescendants()) do
             if v.Name == 'Backpack' then
                 for i, t in pairs(v:GetDescendants()) do
-                    t:Destroy()
-                end
-            end
-        end
-        for i, v in pairs(plr:GetDescendants()) do
-            if v.Name == 'Character' then
-                for i, q in pairs(v:GetDescendants()) do
-                    if q:IsA'Tool' and q.Name == 'path' then
-                        q:Destroy()
+                    if t.Name == 'path' then
+                        t:Destroy()
                     end
                 end
             end
         end
+        for i, v in pairs(plr.Character:GetDescendants()) do
+            v.Name == 'path' then
+                v:Destroy()
+            end
+        end
     end
 end)
-
 set:CreateSlider('size X', 0, 100, 10, false, function(value)
     size1 = value
 end)
