@@ -69,7 +69,7 @@ mini.Name = 'min frame'
 mini.Visible = false
 
 text1.Parent = main
-text1.TextColor3 = Color3.fromRGB(255, 255, 255)
+text1.TextColor3 = Color3.fromRGB(240, 240, 240)
 text1.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 text1.Position = UDim2.new(0, 0, 0.019, 0)
 text1.Size = UDim2.new(0, 157, 0, 17)
@@ -77,17 +77,8 @@ text2.BorderSizePixel = 0
 text1.Text = 'русский chat bypass'
 text1.Name = 'text1'
 
-text2.Parent = main
-text2.TextColor3 = Color3.fromRGB(200, 200, 200)
-text2.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
-text2.Position = UDim2.new(0.509, 0, 0.046, 0)
-text2.Size = UDim2.new(0, 54, 0, 12)
-text2.BorderSizePixel = 0
-text2.Text = 'by: e_lua'
-text2.Name = 'text2'
-
 close.Parent = main
-close.TextColor3 = Color3.fromRGB(255, 255, 255)
+close.TextColor3 = Color3.fromRGB(240, 240, 240)
 close.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 close.Position = UDim2.new(0.884, 0, 0, 0)
 close.Size = UDim2.new(0, 33, 0, 18)
@@ -95,7 +86,7 @@ close.BorderSizePixel = 0
 close.Text = 'X'
 
 minimiz.Parent = main
-minimiz.TextColor3 = Color3.fromRGB(255, 255, 255)
+minimiz.TextColor3 = Color3.fromRGB(240, 240, 240)
 minimiz.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 minimiz.Position = UDim2.new(0.768, 0, 0, 0)
 minimiz.Size = UDim2.new(0, 33, 0, 18)
@@ -104,7 +95,7 @@ minimiz.Text = '-'
 
 toggle.Parent = main
 toggle.BackgroundColor3 = Color3.fromRGB(40, 0, 40)
-toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggle.TextColor3 = Color3.fromRGB(240, 240, 240)
 toggle.Position = UDim2.new(0.024, 0, 0.251, 0)
 toggle.Size = UDim2.new(0, 215, 0, 20)
 toggle.BorderSizePixel = 0
@@ -113,7 +104,7 @@ toggle.Name = 'toggle'
 
 lock_btn.Parent = main
 lock_btn.BackgroundColor3 = Color3.fromRGB(40, 0, 40)
-lock_btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+lock_btn.TextColor3 = Color3.fromRGB(240, 240, 240)
 lock_btn.Position = UDim2.new(0.797, 0, 0.254, 0)
 lock_btn.Size = UDim2.new(0, 53, 0, 20)
 lock_btn.BorderSizePixel = 0
@@ -122,7 +113,7 @@ lock_btn.Name = 'toggle'
 
 textbox.Parent = main
 textbox.BackgroundColor3 = Color3.fromRGB(40, 0, 40)
-textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+textbox.TextColor3 = Color3.fromRGB(240, 240, 240)
 textbox.Position = UDim2.new(0.024, 0, 0.534, 0)
 textbox.Size = UDim2.new(0, 277, 0, 34)
 textbox.BorderSizePixel = 0
@@ -131,7 +122,7 @@ textbox.Name = 'textbox'
 textbox.Text = ''
 
 open.Parent = mini
-open.TextColor3 = Color3.fromRGB(255, 255, 255)
+open.TextColor3 = Color3.fromRGB(240, 240, 240)
 open.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 open.Position = UDim2.new(0, 0, 0, 0)
 open.Size = UDim2.new(0, 50, 0, 18)
@@ -188,7 +179,7 @@ toggle.MouseButton1Click:Connect(function()
         toggle.Text = 'выключить'
         repeat
             wait(1)
-            plrs:Chat'/e CHAT BYPASS EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE88888888888888888888888888888888888888888888888888888888'
+            plrs:Chat'/e CHAT BYPASS EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE88888888888888888888888888888888888888888888888888888888'
             wait(1)
             plrs:Chat'le le le le le le le lele'
         until en == false
@@ -247,9 +238,11 @@ mini.InputBegan:Connect(function(inp)
 end)
 
 uis.InputChanged:Connect(function(inp)
-    if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
-        if dragging then
-            updateInput(inp)
+    if not lock then
+        if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
+            if dragging then
+                updateInput(inp)
+            end
         end
     end
 end)
