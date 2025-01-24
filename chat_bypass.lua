@@ -61,8 +61,8 @@ main.Name = 'main frame'
 mini.Parent = gui
 mini.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 mini.BorderSizePixel = 0
-mini.Position = UDim2.new(0.976, 0, 0.318, 0)
-mini.Size = UDim2.new(0, 289, 0, 19)
+mini.Position = UDim2.new(0, 0, 0, 0)
+mini.Size = UDim2.new(0, 50, 0, 19)
 mini.Name = 'min frame'
 mini.Visible = false
 
@@ -132,7 +132,7 @@ open.Parent = mini
 open.TextColor3 = Color3.fromRGB(255, 255, 255)
 open.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 open.Position = UDim2.new(0, 0, 0, 0)
-open.Size = UDim2.new(0, 33, 0, 18)
+open.Size = UDim2.new(0, 50, 0, 18)
 open.BorderSizePixel = 0
 open.Text = 'open'
 
@@ -215,9 +215,23 @@ local function updateInput(inp)
         startPos.Y.Offset + e.Y
     )
     TweenService:Create(main, TweenInfo.new(dragSpeed), {Position = pos}):Play()
+    TweenService:Create(mini, TweenInfo.new(dragSpeed), {Position = pos}):Play()
 end
 
 main.InputBegan:Connect(function(inp)
+    if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = inp.Position
+        startPos = main.Position
+        inp.Changed:Connect(function()
+            if inp.UserInputState == Enum.UserInputState.End then
+                dragging =  false
+            end
+        end)
+    end 
+end)
+
+mini.InputBegan:Connect(function(inp)
     if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
         dragging = true
         dragStart = inp.Position
