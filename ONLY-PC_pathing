@@ -19,14 +19,14 @@ local set = pathing:NewSection'path settings'
 local float = pathing:NewSection'float'
 
 --path toggle
-main:CreateToggle('pathing (only pc)', function(value)
+main:CreateToggle('pathing', function(value)
     if value then
         disabled = false
         local pathTool = Instance.new('Tool', plr.Backpack)
         pathTool.Name = 'path'
 
         uis.InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 and pathTool.Parent == plr.Character and not disabled then
+            if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and pathTool.Parent == plr.Character and not disabled then
                 local path = Instance.new'Part'
                 path.Parent = workspace
                 path.Size = Vector3.new(size1, size2, size3)
@@ -74,7 +74,7 @@ set:CreateSlider('size Z', 0, 100, 5, false, function(value)
     size3 = value
 end)
 
-float:CreateToggle('floating (universal)', function(value)
+float:CreateToggle('floating', function(value)
     if value then
         floating = true
         if floating then
