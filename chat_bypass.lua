@@ -1,6 +1,8 @@
 --[[
 by @e_lua with ❤️.
 (https://t.me/sosiskascript)
+борокин крутой
+оливер айку еблан
 ]]
 
 --variables
