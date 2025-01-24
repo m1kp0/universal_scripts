@@ -2,6 +2,7 @@
 by @e_lua with ❤️.
 (https://t.me/sosiskascript)
 ]]
+
 --variables
 local plrs = game.Players
 local plr = plrs.LocalPlayer
@@ -53,7 +54,7 @@ gui.Name = 'bypass gui'
 main.Parent = gui
 main.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 main.BorderSizePixel = 0
-main.Position = UDim2.new(0, 400, 0, 381)
+main.Position = UDim2.new(0, 0, 0, 50)
 main.Size = UDim2.new(0, 289, 0, 94)
 main.Name = 'main frame'
 
