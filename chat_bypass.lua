@@ -176,11 +176,11 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat
-            wait(0.5)
+            wait(0.2)
             plrs:Chat'[m1kp bypasser] ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890'
-            wait(0.5)
+            wait(0.2)
             plrs:Chat'[m1kp bypasser] /e ABC'
-            wait(0.5)
+            wait(0.2)
             plrs:Chat'[m1kp bypasser] /e CHATBYPASS'
         until en == false
     else
