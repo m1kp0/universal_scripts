@@ -1,8 +1,6 @@
 --[[
 by @e_lua with ❤️.
-подпишитес сюда в тг https://t.me/sosiskascript (я не овнер канала)
-борокин крутой
-оливер айку еблан
+(https://t.me/sosiskascript)
 ]]
 
 --variables
@@ -178,18 +176,12 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat
-            plrs:Chat'[m1kp bypasser] le le le le le'
             wait(0.5)
             plrs:Chat'[m1kp bypasser] EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE'
             wait(0.5)
             plrs:Chat'[m1kp bypasser] /e ABC'
-            wait()
+            wait(0.5)
             plrs:Chat'[m1kp bypasser] /e CHATBYPASS'
-            wait(0.5)
-            plrs:Chat'[m1kp bypasser] le le le le le le le le le'
-            wait(0.5)
-            plrs:Chat'[m1kp bypasser] le le le le le le le'
-            wait(0.5)
         until en == false
     else
         en = false
