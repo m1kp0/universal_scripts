@@ -138,6 +138,16 @@ uic8.Parent = minimiz
 uic9.Parent = open
 uic10.Parent = mini
 
+--random char (from systembroken)
+local function x()
+	local length = math.random(1,5)
+	local array = {}
+	for i = 1, length do
+		array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
+
 --work
 minimiz.MouseButton1Click:Connect(function() 
     minimiz.Text = '-'
@@ -175,13 +185,8 @@ toggle.MouseButton1Click:Connect(function()
     if toggle.Text == 'включить' then
         en = true
         toggle.Text = 'выключить'
-        repeat
-            wait(0.2)
-            plrs:Chat'[m1kp bypasser] ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXWZ1234567890'
-            wait(0.2)
-            plrs:Chat'[m1kp bypasser] /e ABC'
-            wait(0.2)
-            plrs:Chat'[m1kp bypasser] /e CHATBYPASS'
+        repeat task.wait()
+            plrs:Chat(x())
         until en == false
     else
         en = false
