@@ -1,6 +1,6 @@
 --[[
-by @e_lua with ❤️.
-(https://t.me/sosiskascript)
+by m1kp (@e_lua) with ❤️.
+я не овнер, подпишитес просто сюда - https://t.me/sosiskascript
 ]]
 
 --variables
