@@ -1,3 +1,6 @@
+--[[
+not only pc now, i made a mobile support lol
+]]
 --to script
 local plr = game.Players.LocalPlayer
 local uis = game:GetService'UserInputService'
