@@ -1,6 +1,6 @@
 --[[
 by @e_lua with ❤️.
-(https://t.me/sosiskascript)
+подпишитес сюда в тг https://t.me/sosiskascript (я не овнер канала)
 борокин крутой
 оливер айку еблан
 ]]
@@ -178,10 +178,18 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat
-            wait(1)
-            plrs:Chat'/e CHAT BYPASS EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE88888888888888888888888888888888888888888888888888888888'
-            wait(1)
-            plrs:Chat'le le le le le le le lele'
+            plrs:Chat'[m1kp bypasser] le le le le le'
+            wait(0.5)
+            plrs:Chat'[m1kp bypasser] EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE'
+            wait(0.5)
+            plrs:Chat'[m1kp bypasser] /e ABC'
+            wait()
+            plrs:Chat'[m1kp bypasser] /e CHATBYPASS'
+            wait(0.5)
+            plrs:Chat'[m1kp bypasser] le le le le le le le le le'
+            wait(0.5)
+            plrs:Chat'[m1kp bypasser] le le le le le le le'
+            wait(0.5)
         until en == false
     else
         en = false
