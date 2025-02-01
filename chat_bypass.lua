@@ -1,8 +1,3 @@
---[[
-by m1kp with ❤️.
-https://t.me/sosiskascript выебете овнера
-]]
-
 --variables
 local plrs = game.Players
 local plr = plrs.LocalPlayer
@@ -19,7 +14,7 @@ local coregui = cloneref(game:GetService'CoreGui')
 --toggle
 local en = false
 local dragging
-local dragSpeed = 0.25
+local dragSpeed = 0.2
 local dragStart = nil
 local startPos = nil
 local lock
@@ -138,16 +133,6 @@ uic8.Parent = minimiz
 uic9.Parent = open
 uic10.Parent = mini
 
---random char (from systembroken)
-local function x()
-	local length = math.random(1,5)
-	local array = {}
-	for i = 1, length do
-		array[i] = string.char(math.random(32, 126))
-	end
-	return table.concat(array)
-end
-
 --work
 minimiz.MouseButton1Click:Connect(function() 
     minimiz.Text = '-'
@@ -186,7 +171,14 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat task.wait()
-            plrs:Chat(x())
+            plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+            wait(0.2)
+            plrs:Chat("/e ABC")
+            wait(0.2)
+            plrs:Chat("le le le le le le le")
+            wait(0.2)
+            plrs:Chat("le le le le le")
+            wait(0.2)
         until en == false
     else
         en = false
@@ -195,10 +187,10 @@ toggle.MouseButton1Click:Connect(function()
 end)
 
 textbox.FocusLost:Connect(function()
-    if oldChat then
-        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(textbox.Text, 'All')
-    else
+    if not oldChat then
         TextChatService.TextChannels.RBXGeneral:SendAsync(textbox.Text)
+    else
+        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(textbox.Text, 'All')
     end
 	textbox.Text = ''
 end)
@@ -213,7 +205,7 @@ local function updateInput(inp)
         startPos.Y.Offset + e.Y
     )
     TweenService:Create(main, TweenInfo.new(dragSpeed), {Position = pos}):Play()
-    TweenService:Create(mini, TweenInfo.new(dragSpeed), {Position = pos}):Play()
+    TweenService:Create(open, TweenInfo.new(dragSpeed), {Position = pos}):Play()
 end
 
 main.InputBegan:Connect(function(inp)
@@ -229,7 +221,7 @@ main.InputBegan:Connect(function(inp)
     end 
 end)
 
-mini.InputBegan:Connect(function(inp)
+open.InputBegan:Connect(function(inp)
     if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
         dragging = true
         dragStart = inp.Position
