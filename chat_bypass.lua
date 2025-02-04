@@ -1,5 +1,5 @@
 --variables
-local plrs = game.Players
+local plrs = game.plrs
 local plr = plrs.LocalPlayer
 local mouse = plr:GetMouse()
 local TweenService = game:GetService'TweenService'
@@ -171,14 +171,17 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat task.wait()
-            plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-            wait(0.2)
-            plrs:Chat("/e ABC")
-            wait(0.2)
-            plrs:Chat("le le le le le le le")
-            wait(0.2)
-            plrs:Chat("le le le le le")
-            wait(0.2)
+            plrs:Chat("[m1kp chatbypass]: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ true false", "All")
+			wait()
+			plrs:Chat("[m1kp chatbypass]: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ true false", "All")
+			wait()
+			plrs:Chat("[m1kp chatbypass]: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ true false", "All")
+			wait()
+			plrs:Chat("/e ABC")
+			wait()
+			plrs:Chat("le le le le le le le")
+			wait() 
+			plrs:Chat("le le le le le")
         until en == false
     else
         en = false
