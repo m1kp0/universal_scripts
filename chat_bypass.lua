@@ -187,6 +187,14 @@ toggle.MouseButton1Click:Connect(function()
 end)
 
 textbox.FocusLost:Connect(function()
+    plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    wait()
+    plrs:Chat("/e ABC")
+    wait()
+    plrs:Chat("le le le le le le le")
+    wait()
+    plrs:Chat("le le le le le")
+    wait()
     if not oldChat then
         TextChatService.TextChannels.RBXGeneral:SendAsync(textbox.Text)
     else
