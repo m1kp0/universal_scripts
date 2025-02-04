@@ -1,5 +1,5 @@
 --variables
-local plrs = game.plrs
+local plrs = game.Players
 local plr = plrs.LocalPlayer
 local mouse = plr:GetMouse()
 local TweenService = game:GetService'TweenService'
