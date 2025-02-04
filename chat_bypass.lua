@@ -171,17 +171,14 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat task.wait()
-            plrs:Chat("[m1kp chatbypass]: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ true false", "All")
-			wait()
-			plrs:Chat("[m1kp chatbypass]: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ true false", "All")
-			wait()
-			plrs:Chat("[m1kp chatbypass]: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321ABCDEFGHIJKLMNOPQRSTUVWXYZ true false", "All")
-			wait()
-			plrs:Chat("/e ABC")
-			wait()
-			plrs:Chat("le le le le le le le")
-			wait() 
-			plrs:Chat("le le le le le")
+            plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+            wait()
+            plrs:Chat("/e ABC")
+            wait()
+            plrs:Chat("le le le le le le le")
+            wait()
+            plrs:Chat("le le le le le")
+            wait()
         until en == false
     else
         en = false
