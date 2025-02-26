@@ -1,4 +1,5 @@
---variables
+--сэкс
+--var
 local plrs = game.Players
 local plr = plrs.LocalPlayer
 local mouse = plr:GetMouse()
@@ -9,7 +10,6 @@ local TextChatService = cloneref(game:GetService'TextChatService')
 local oldChat = TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService
 local stepped = game:GetService'RunService'.Stepped
 local coregui = cloneref(game:GetService'CoreGui')
-
 
 --toggle
 local en = false
@@ -133,7 +133,6 @@ uic8.Parent = minimiz
 uic9.Parent = open
 uic10.Parent = mini
 
---work
 minimiz.MouseButton1Click:Connect(function() 
     minimiz.Text = '-'
     main.Visible = false
@@ -150,9 +149,7 @@ end)
 
 close.MouseButton1Click:Connect(function() 
     for i, gui in pairs(game.CoreGui:GetDescendants()) do
-        if gui.Name == 'bypass gui' then
-            gui:Destroy()
-        end
+        if gui.Name == 'bypass gui' then gui:Destroy() end
     end
 end)
 
@@ -200,7 +197,7 @@ textbox.FocusLost:Connect(function()
     else
         ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(textbox.Text, 'All')
     end
-	textbox.Text = ''
+    textbox.Text = ''
 end)
 
 --make draggable
@@ -222,9 +219,7 @@ main.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then
-                dragging =  false
-            end
+            if inp.UserInputState == Enum.UserInputState.End then dragging = false end
         end)
     end 
 end)
@@ -235,9 +230,7 @@ open.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then
-                dragging =  false
-            end
+            if inp.UserInputState == Enum.UserInputState.End then dragging =  false end
         end)
     end 
 end)
@@ -245,9 +238,7 @@ end)
 uis.InputChanged:Connect(function(inp)
     if not lock then
         if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
-            if dragging then
-                updateInput(inp)
-            end
+            if dragging then updateInput(inp) end
         end
     end
 end)
