@@ -171,7 +171,7 @@ toggle.MouseButton1Click:Connect(function()
     if toggle.Text == 'включить' then
         en = true
         toggle.Text = 'выключить'
-        repeat task.task.wait()
+        repeat task.wait()
             plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
             task.wait()
             plrs:Chat("/e ABC")
