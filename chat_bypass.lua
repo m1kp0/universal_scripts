@@ -1,15 +1,16 @@
---сэкс
---var
+if not game:IsLoaded() then repeat wait() until game:IsLoaded() end
+
+--variables
 local plrs = game.Players
 local plr = plrs.LocalPlayer
 local mouse = plr:GetMouse()
 local TweenService = game:GetService'TweenService'
 local ReplicatedStorage = game:GetService'ReplicatedStorage'
 local uis = game:GetService'UserInputService'
-local TextChatService = cloneref(game:GetService'TextChatService')
+local TextChatService = game:GetService'TextChatService'
+local coregui = game:GetService'CoreGui'
 local oldChat = TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService
 local stepped = game:GetService'RunService'.Stepped
-local coregui = cloneref(game:GetService'CoreGui')
 
 --toggle
 local en = false
@@ -30,7 +31,7 @@ local open = Instance.new'TextButton'
 local minimiz = Instance.new'TextButton'
 local toggle = Instance.new'TextButton'
 local lock_btn = Instance.new'TextButton'
-local textbox = Instance.new'TextBox'
+local BypassTextbox = Instance.new'TextBox'
 local uic1 = Instance.new'UICorner'
 local uic2 = Instance.new'UICorner'
 local uic3 = Instance.new'UICorner'
@@ -104,15 +105,15 @@ lock_btn.BorderSizePixel = 0
 lock_btn.Text = 'lock'
 lock_btn.Name = 'toggle'
 
-textbox.Parent = main
-textbox.BackgroundColor3 = Color3.fromRGB(40, 0, 40)
-textbox.TextColor3 = Color3.fromRGB(240, 240, 240)
-textbox.Position = UDim2.new(0.024, 0, 0.534, 0)
-textbox.Size = UDim2.new(0, 277, 0, 34)
-textbox.BorderSizePixel = 0
-textbox.PlaceholderText = 'пиши сюда..'
-textbox.Name = 'textbox'
-textbox.Text = ''
+BypassTextbox.Parent = main
+BypassTextbox.BackgroundColor3 = Color3.fromRGB(40, 0, 40)
+BypassTextbox.TextColor3 = Color3.fromRGB(240, 240, 240)
+BypassTextbox.Position = UDim2.new(0.024, 0, 0.534, 0)
+BypassTextbox.Size = UDim2.new(0, 277, 0, 34)
+BypassTextbox.BorderSizePixel = 0
+BypassTextbox.PlaceholderText = 'пиши сюда..'
+BypassTextbox.Name = 'BypassTextbox'
+BypassTextbox.Text = ''
 
 open.Parent = mini
 open.TextColor3 = Color3.fromRGB(240, 240, 240)
@@ -126,13 +127,14 @@ uic1.Parent = main
 uic2.Parent = text1
 uic3.Parent = text2
 uic4.Parent = toggle
-uic5.Parent = textbox
+uic5.Parent = BypassTextbox
 uic6.Parent = lock_btn
 uic7.Parent = close
 uic8.Parent = minimiz
 uic9.Parent = open
 uic10.Parent = mini
 
+--work
 minimiz.MouseButton1Click:Connect(function() 
     minimiz.Text = '-'
     main.Visible = false
@@ -149,7 +151,9 @@ end)
 
 close.MouseButton1Click:Connect(function() 
     for i, gui in pairs(game.CoreGui:GetDescendants()) do
-        if gui.Name == 'bypass gui' then gui:Destroy() end
+        if gui.Name == 'bypass gui' then
+            gui:Destroy()
+        end
     end
 end)
 
@@ -167,15 +171,15 @@ toggle.MouseButton1Click:Connect(function()
     if toggle.Text == 'включить' then
         en = true
         toggle.Text = 'выключить'
-        repeat task.wait()
+        repeat task.task.wait()
             plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-            wait()
+            task.wait()
             plrs:Chat("/e ABC")
-            wait()
+            task.wait()
             plrs:Chat("le le le le le le le")
-            wait()
+            task.wait()
             plrs:Chat("le le le le le")
-            wait()
+            task.wait()
         until en == false
     else
         en = false
@@ -183,21 +187,28 @@ toggle.MouseButton1Click:Connect(function()
     end
 end)
 
-textbox.FocusLost:Connect(function()
+BypassTextbox.FocusLost:Connect(function()
     plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-    wait()
+    task.wait()
     plrs:Chat("/e ABC")
-    wait()
+    task.wait()
     plrs:Chat("le le le le le le le")
-    wait()
+    task.wait()
     plrs:Chat("le le le le le")
-    wait()
+    task.wait()
     if not oldChat then
-        TextChatService.TextChannels.RBXGeneral:SendAsync(textbox.Text)
+        TextChatService.TextChannels.RBXGeneral:SendAsync(BypassTextbox.Text)
     else
-        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(textbox.Text, 'All')
+        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(BypassTextbox.Text, 'All')
     end
-    textbox.Text = ''
+	BypassTextbox.Text = ''
+end)
+
+mouse.KeyDown:Connect(function(key) 
+    if key == '/' then
+        task.wait()
+        BypassTextbox:CaptureFocus()
+	end
 end)
 
 --make draggable
@@ -219,7 +230,9 @@ main.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then dragging = false end
+            if inp.UserInputState == Enum.UserInputState.End then
+                dragging =  false
+            end
         end)
     end 
 end)
@@ -230,7 +243,9 @@ open.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then dragging =  false end
+            if inp.UserInputState == Enum.UserInputState.End then
+                dragging =  false
+            end
         end)
     end 
 end)
@@ -238,7 +253,9 @@ end)
 uis.InputChanged:Connect(function(inp)
     if not lock then
         if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
-            if dragging then updateInput(inp) end
+            if dragging then
+                updateInput(inp)
+            end
         end
     end
 end)
