@@ -1,35 +1,34 @@
-if not game:IsLoaded() then repeat wait() until game:IsLoaded() end
-
---variables
+-- script
 local plrs = game.Players
 local plr = plrs.LocalPlayer
 local mouse = plr:GetMouse()
-local TweenService = game:GetService'TweenService'
-local ReplicatedStorage = game:GetService'ReplicatedStorage'
+local rs = game:GetService'ReplicatedStorage'
+local ts = game:GetService'TweenService'
 local uis = game:GetService'UserInputService'
-local TextChatService = game:GetService'TextChatService'
+local tcs = game:GetService'TextChatService'
 local coregui = game:GetService'CoreGui'
-local oldChat = TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService
-local stepped = game:GetService'RunService'.Stepped
+local oldChat = tcs.ChatVersion == Enum.ChatVersion.LegacyChatService
 
---toggle
-local en = false
+-- toggle
 local dragging
-local dragSpeed = 0.2
-local dragStart = nil
-local startPos = nil
 local lock
+local en
 
---instance
+-- settings
+local startPos = nil
+local dragStart = nil
+local dragSpeed = 0.2
+
+-- instance
 local gui = Instance.new'ScreenGui'
 local main = Instance.new'Frame'
 local mini = Instance.new'Frame'
 local text1 = Instance.new'TextLabel'
 local text2 = Instance.new'TextLabel'
-local close = Instance.new'TextButton'
 local open = Instance.new'TextButton'
-local minimiz = Instance.new'TextButton'
+local close = Instance.new'TextButton'
 local toggle = Instance.new'TextButton'
+local minimiz = Instance.new'TextButton'
 local lock_btn = Instance.new'TextButton'
 local BypassTextbox = Instance.new'TextBox'
 local uic1 = Instance.new'UICorner'
@@ -43,7 +42,23 @@ local uic8 = Instance.new'UICorner'
 local uic9 = Instance.new'UICorner'
 local uic10 = Instance.new'UICorner'
 
---gui
+-- functions
+local function invis_chat(e)
+    plrs:Chat(e)
+end
+
+local function bypass_chat()
+    invis_chat('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
+    task.wait()
+    invis_chat('/e ABC')
+    task.wait()
+    invis_chat('le le le le le le le')
+    task.wait()
+    invis_chat('le le le le le')
+    task.wait()
+end
+
+-- gui
 gui.Parent = coregui
 gui.Name = 'bypass gui'
 
@@ -134,7 +149,7 @@ uic8.Parent = minimiz
 uic9.Parent = open
 uic10.Parent = mini
 
---work
+-- work
 minimiz.MouseButton1Click:Connect(function() 
     minimiz.Text = '-'
     main.Visible = false
@@ -172,14 +187,7 @@ toggle.MouseButton1Click:Connect(function()
         en = true
         toggle.Text = 'выключить'
         repeat task.wait()
-            plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-            task.wait()
-            plrs:Chat("/e ABC")
-            task.wait()
-            plrs:Chat("le le le le le le le")
-            task.wait()
-            plrs:Chat("le le le le le")
-            task.wait()
+            bypass_chat()
         until en == false
     else
         en = false
@@ -188,18 +196,11 @@ toggle.MouseButton1Click:Connect(function()
 end)
 
 BypassTextbox.FocusLost:Connect(function()
-    plrs:Chat("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-    task.wait()
-    plrs:Chat("/e ABC")
-    task.wait()
-    plrs:Chat("le le le le le le le")
-    task.wait()
-    plrs:Chat("le le le le le")
-    task.wait()
-    if not oldChat then
-        TextChatService.TextChannels.RBXGeneral:SendAsync(BypassTextbox.Text)
+    bypass_chat()
+    if oldChat then
+        rs.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(BypassTextbox.Text, 'All')
     else
-        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(BypassTextbox.Text, 'All')
+        tcs.TextChannels.RBXGeneral:SendAsync(BypassTextbox.Text)
     end
 	BypassTextbox.Text = ''
 end)
@@ -211,7 +212,7 @@ mouse.KeyDown:Connect(function(key)
 	end
 end)
 
---make draggable
+-- drag
 local function updateInput(inp)
     local e = inp.Position - dragStart
     local pos = UDim2.new(
@@ -220,8 +221,8 @@ local function updateInput(inp)
         startPos.Y.Scale, 
         startPos.Y.Offset + e.Y
     )
-    TweenService:Create(main, TweenInfo.new(dragSpeed), {Position = pos}):Play()
-    TweenService:Create(open, TweenInfo.new(dragSpeed), {Position = pos}):Play()
+    ts:Create(main, TweenInfo.new(dragSpeed), {Position = pos}):Play()
+    ts:Create(open, TweenInfo.new(dragSpeed), {Position = pos}):Play()
 end
 
 main.InputBegan:Connect(function(inp)
@@ -230,9 +231,7 @@ main.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then
-                dragging =  false
-            end
+            if inp.UserInputState == Enum.UserInputState.End then dragging =  false end
         end)
     end 
 end)
@@ -243,9 +242,7 @@ open.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then
-                dragging =  false
-            end
+            if inp.UserInputState == Enum.UserInputState.End then dragging =  false end
         end)
     end 
 end)
@@ -253,9 +250,7 @@ end)
 uis.InputChanged:Connect(function(inp)
     if not lock then
         if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
-            if dragging then
-                updateInput(inp)
-            end
+            if dragging then updateInput(inp) end
         end
     end
 end)
