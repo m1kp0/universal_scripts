@@ -45,10 +45,8 @@ main:CreateToggle('pathing', function(value)
     else
         disabled = true
         for i, v in pairs(workspace:GetDescendants()) do
-            if v.Name == 'pathPart' then v:Destroy()
-            end
-            if v.Name == 'pathTool' then v:Destroy()
-            end
+            if v.Name == 'pathPart' then v:Destroy() end
+            if v.Name == 'pathTool' then v:Destroy() end
         end
         for i, v in pairs(plr:GetDescendants()) do
             if v.Name == 'Backpack' then
