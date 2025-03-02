@@ -231,7 +231,7 @@ main.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then dragging =  false end
+            if inp.UserInputState == Enum.UserInputState.End then dragging = false end
         end)
     end 
 end)
@@ -242,7 +242,7 @@ open.InputBegan:Connect(function(inp)
         dragStart = inp.Position
         startPos = main.Position
         inp.Changed:Connect(function()
-            if inp.UserInputState == Enum.UserInputState.End then dragging =  false end
+            if inp.UserInputState == Enum.UserInputState.End then dragging = false end
         end)
     end 
 end)
