@@ -4,7 +4,7 @@ local wind = lib:Window("anti bang")
 wind:Button("kill banger", function()
     local plr = game.Players.LocalPlayer
     local hrp = plr.Character.HumanoidRootPart
-    local oldPos = rhp.Position
+    local oldPos = hrp.Position
     workspace.FallenPartsDestroyHeight = -10000
     hrp.CFrame = CFrame.new(0, -1000, 0)
     task.wait(1)
