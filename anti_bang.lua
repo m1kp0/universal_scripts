@@ -2,10 +2,12 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/m1kp0/lib
 local wind = lib:Window("anti bang")
 
 wind:Button("press", function()
-  oldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-  game.Workspace.FallenPartsDestroyHeight = -10000
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, -1000, 0)
-  wait(1)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-  game.Workspace.FallenPartsDestroyHeight = -100
+    local plr = game.Players.LocalPlayer
+    local hrp = plr.Character.HumanoidRootPart
+    local oldPos = rhp.Position
+  workspace.FallenPartsDestroyHeight = -10000
+  hrp.CFrame = CFrame.new(0, -1000, 0)
+  task.wait(1)
+  hrp.CFrame = CFrame.new(oldPos)
+  workspace.FallenPartsDestroyHeight = -100
 end)
