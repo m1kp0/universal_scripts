@@ -4,9 +4,10 @@ local me = others.LocalPlayer
 local mouse = me:GetMouse()
 local get_others = game.Players:GetPlayers()
 local run_service = game:GetService("RunService")
+
 local auto_shoot = false
 local last_click = 0
-local max_distance = 1000
+local max_distance = math.huge
 
 local function check_player()
     local hit = mouse.Target
@@ -14,7 +15,9 @@ local function check_player()
         local character = hit:FindFirstAncestorOfClass("Model")
         if character and others:GetPlayerFromCharacter(character) then
             if auto_shoot and (character.HumanoidRootPart.Position - me.Character.HumanoidRootPart.Position).Magnitude < max_distance then
-                return true
+                if character.Humanoid.Health > 0 then
+                    return true
+                end
             end
         end
     end
@@ -40,5 +43,8 @@ Main:CreateToggle("Toggle trigger", function(en)
     end)
 end)
 
-Main:CreateSlider("Max distance", 0, 1000, 1000, false, function(value) max_distance = value end)
+Main:CreateSlider("Max distance", 0, 1000, 1000, false, function(value)
+    max_distance = value
+end)
+
 print("[SCRIPT]: loaded gui.")
