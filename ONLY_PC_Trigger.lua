@@ -1,8 +1,8 @@
 print("starting")
-local others = game.Players
+local others = game:GetService("Players")
 local me = others.LocalPlayer
 local mouse = me:GetMouse()
-local get_others = game.Players:GetPlayers()
+local get_others = others:GetPlayers()
 local run_service = game:GetService("RunService")
 
 -- toggles
