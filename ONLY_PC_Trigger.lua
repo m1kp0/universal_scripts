@@ -36,8 +36,8 @@ local Main = window:NewSection("Main")
 
 Main:CreateToggle("Toggle trigger", function(en)
     auto_shoot = en
-    run_service.Heartbeat:Connect(function()
-        run_service.Heartbeat:Wait()
+    run_service.PreSimulation:Connect(function()
+        run_service.RenderStepped:Wait()
         if auto_shoot and check_player() then
             local current_click = tick()
             if current_click - last_click >= 0.01 then
