@@ -2,7 +2,7 @@
 not only pc now, i made a mobile support lol
 ]]
 --to script
-local plr = game.Players.LocalPlayer
+local plr = game:GetService("Players").LocalPlayer
 local uis = game:GetService'UserInputService'
 local disabled = false
 local floating = false
@@ -44,20 +44,13 @@ main:CreateToggle('pathing', function(value)
         end)	
     else
         disabled = true
-        for i, v in pairs(workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetChildren()) do
             if v.Name == 'pathPart' then v:Destroy() end
-            if v.Name == 'pathTool' then v:Destroy() end
         end
-        for i, v in pairs(plr:GetDescendants()) do
-            if v.Name == 'Backpack' then
-                for i, t in pairs(v:GetDescendants()) do
-                    if t.Name == 'path' then t:Destroy() end
-                end
-            end
-        end
-        for i, v in pairs(plr.Character:GetDescendants()) do
-            if v.Name == 'path' then v:Destroy() end
-        end
+        local isToolC = plr.Character:FindFirstChild('path')
+        local isToolB = plr.Backpack:FindFirstChild('path')
+        if isToolB then isToolB:Destroy() end
+        if isToolC then isToolC:Destroy() end
     end
 end)
 
@@ -94,4 +87,3 @@ float:CreateToggle('floating', function(value)
         end
     end
 end)
-
