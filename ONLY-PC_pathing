@@ -89,7 +89,7 @@ float:CreateToggle('floating', function(value)
         end
     else
         floating = false
-        for i, v in pairs(workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetChildren()) do
             if v.Name == 'floatPart' then v:Destroy() end
         end
     end
