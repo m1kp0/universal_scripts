@@ -136,7 +136,7 @@ local function fake_lagg_f()
 end
 
 local function int(var)
-    var = tonumber(var) or var
+    var = tonumber(var) or 1
     return var
 end
 
