@@ -181,7 +181,7 @@ lagg_btn.MouseButton1Click:Connect(function()
 end)
 
 standing_btn.MouseButton1Click:Connect(function()
-	standing_v = not standing_v
+    standing_v = not standing_v
     if me.Character ~= nil then
         hum = me.Character.Humanoid
         if standing_v then
