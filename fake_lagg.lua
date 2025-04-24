@@ -66,7 +66,7 @@ minimize_frame.Size = UDim2.new(0, 124, 0, 13)
 minimize_frame.Position = UDim2.new(0, 0, 0, 0)
 minimize_frame.BackgroundColor3 = Color3.fromRGB(50, 0, 50)
 minimize_frame.Name = "Minimize_frame"
-bg_frame.Visible = false
+minimize_frame.Visible = true
 
 close_btn.Parent = minimize_frame
 close_btn.TextColor3 = Color3.fromRGB(240, 240, 240)
@@ -181,7 +181,7 @@ lagg_btn.MouseButton1Click:Connect(function()
 end)
 
 standing_btn.MouseButton1Click:Connect(function()
-    standing_v = not standing_v
+	standing_v = not standing_v
     if me.Character ~= nil then
         hum = me.Character.Humanoid
         if standing_v then
