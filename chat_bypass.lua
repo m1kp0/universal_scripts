@@ -136,7 +136,7 @@
     instances.lock_btn.MouseButton1Click:Connect(function()  if instances.lock_btn.Text == 'lock' then lock = true; instances.lock_btn.Text = 'unlock' else lock = false; instances.lock_btn.Text = 'lock' end end)
     instances.toggle.MouseButton1Click:Connect(function()
         if instances.toggle.Text == 'включить' then
-            en = true; instances.toggle.Text = 'выключить'; repeat task.wait() task.spawn(bypass_chat) until en == false
+            en = true; instances.toggle.Text = 'выключить'; repeat task.wait(.1); task.spawn(bypass_chat) until en == false
         else
             en = false; instances.toggle.Text = 'включить'
         end
